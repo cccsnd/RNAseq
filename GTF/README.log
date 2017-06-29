@@ -1,1 +1,1 @@
-.
+get_region_from_gtf.pl: 将从ensemble下载的gtf文件转化成bed文件。
