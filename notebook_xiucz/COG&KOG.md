@@ -50,11 +50,11 @@ makeblastdb -in input_file -dbtype molecule_type -title database_title -parse_se
 
 3. 整理结果
 ```
-perl get_COG_ANNOTATION.pl Cog_out_last
+perl  ~/RNAseq/scripts/COG/get_COG_ANNOTATION.pl Cog_out_last
 ```
 
 4. 绘图
 ```
-perl diff_gene_COG_class.pl COG_ANNOTATION.xls
-perl COG_enrichment.pl COG_ANNOTATION.xls
+perl ~/RNAseq/scripts/COG/diff_gene_COG_class.pl COG_ANNOTATION.xls
+perl ~/RNAseq/scripts/COG/COG_enrichment.pl COG_ANNOTATION.xls
 ```
