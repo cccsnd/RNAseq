@@ -25,5 +25,38 @@ and has achieved a high degree of accuracy when compared with the manually curat
 同时把 reference作为query，把geneome作为refernce，进行blast比对。按照下面的条件对每个 homolog 进行过滤，
 Blast bits score > 60，bi-directional hit rate (BHR)>0.95。Blast Bits Score 是在 Blast raw score 换算过来的。
 
+## KEGG api
+KEGG 官网提供了API, 可以方便的访问KEGG 数据库中的内容，链接如下：
+http://www.kegg.jp/kegg/rest/keggapi.html
+
+利用API可以得到某一个基因参与的pathway 信息， 以human 为例；
+
+1) 第一步，获取每条pathway具体的描述信息
+对应的API为 ： http://rest.kegg.jp/list/pathway/hsa
+内容如下：
+```
+path:hsa00010   Glycolysis / Gluconeogenesis - Homo sapiens (human)
+path:hsa00020   Citrate cycle (TCA cycle) - Homo sapiens (human)
+path:hsa00030   Pentose phosphate pathway - Homo sapiens (human)
+path:hsa00040   Pentose and glucuronate interconversions - Homo sapiens (human)
+path:hsa00051   Fructose and mannose metabolism - Homo sapiens (human)
+```
+可以看到，返回的内容一共两列，第一列为物种对应的pathway, 第二列为该pathway 对应的描述信息；
+
+2）第二步， 获取物种对应的基因信息
+
+对应的API 为：http://rest.kegg.jp/list/hsa
+
+内容如下：
+```
+hsa:100287010   uncharacterized LOC100287010
+hsa:100288846   uncharacterized LOC100288846
+hsa:222029  DKFZp434L192; uncharacterized protein DKFZp434L192
+hsa:146512  uncharacterized protein FLJ30679
+hsa:100128288   uncharacterized LOC100128288
+hsa:200058  uncharacterized protein FLJ23867
+```
+第一列为基因在KEGG数据库中的ID, 第二列为该基因的具体信息，其中RefSeq 字段之后的内容为该基因的名字，比如 hsa:222029 对应的gene symbol 为DKFzp434L92
 ## Reference_Info
 http://www.cnblogs.com/nkwy2012/p/6232239.html  
+http://www.cnblogs.com/xudongliang/p/6845818.html
