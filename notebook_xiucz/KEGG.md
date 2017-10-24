@@ -25,6 +25,14 @@ and has achieved a high degree of accuracy when compared with the manually curat
 同时把 reference作为query，把geneome作为refernce，进行blast比对。按照下面的条件对每个 homolog 进行过滤，
 Blast bits score > 60，bi-directional hit rate (BHR)>0.95。Blast Bits Score 是在 Blast raw score 换算过来的。
 
+## KOBAS
+
+## R packages
+http://bioconductor.org/packages/release/bioc/html/KEGGREST.html
+```r
+library(KEGGREST)
+org <- keggList("organism")
+```
 ## KEGG api
 KEGG 官网提供了API, 可以方便的访问KEGG 数据库中的内容，链接如下：
 http://www.kegg.jp/kegg/rest/keggapi.html
@@ -43,10 +51,8 @@ path:hsa00051   Fructose and mannose metabolism - Homo sapiens (human)
 ```
 可以看到，返回的内容一共两列，第一列为物种对应的pathway, 第二列为该pathway 对应的描述信息；
 
-2）第二步， 获取物种对应的基因信息
-
+2)第二步， 获取物种对应的基因信息
 对应的API 为：http://rest.kegg.jp/list/hsa
-
 内容如下：
 ```
 hsa:100287010   uncharacterized LOC100287010
@@ -57,6 +63,25 @@ hsa:100128288   uncharacterized LOC100128288
 hsa:200058  uncharacterized protein FLJ23867
 ```
 第一列为基因在KEGG数据库中的ID, 第二列为该基因的具体信息，其中RefSeq 字段之后的内容为该基因的名字，比如 hsa:222029 对应的gene symbol 为DKFzp434L92
+
+如果这个基因在Refseq 之后的内容有逗号分隔的多个内容，取第一个作为其gene symbol
+```
+hsa:390660  ADAMTS7P1, ADAMTS7P2; ADAMTS7 pseudogene 1
+```
+以hsa:390660为例，对应的gene symbol 为 ADAMTS7P1
+通过以上方法获得的gene symbol 和NCBI的GENE 数据库中的基因名是一致的
+
+3） 第三步， 获取基因和pathway 之间的对应的关系
+对应的API为：http://rest.kegg.jp/link/pathway/hsa
+内容如下：
+```
+hsa:10327   path:hsa00010
+hsa:124 path:hsa00010
+hsa:125 path:hsa00010
+hsa:126 path:hsa00010
+```
+可以看出，第一列为KEGG数据库中的ID, 第二列为该基因参与的pathway的ID;
+
 ## Reference_Info
 http://www.cnblogs.com/nkwy2012/p/6232239.html  
 http://www.cnblogs.com/xudongliang/p/6845818.html
