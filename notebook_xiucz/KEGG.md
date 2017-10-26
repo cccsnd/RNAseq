@@ -25,6 +25,8 @@ and has achieved a high degree of accuracy when compared with the manually curat
 同时把 reference作为query，把geneome作为refernce，进行blast比对。按照下面的条件对每个 homolog 进行过滤，
 Blast bits score > 60，bi-directional hit rate (BHR)>0.95。Blast Bits Score 是在 Blast raw score 换算过来的。
 
+## 
+http://www.genome.jp/kegg/tool/map_pathway2.html
 ## KOBAS
 
 ## R packages
@@ -83,6 +85,12 @@ hsa:126 path:hsa00010
 ```
 可以看出，第一列为KEGG数据库中的ID, 第二列为该基因参与的pathway的ID;
 
+operation是get，dbentries就是ID号，查找ID为K00001的，那么api的URL为：
+```
+http://rest.kegg.jp/get/K00001
+```
+
 ## Reference_Info
-http://www.cnblogs.com/nkwy2012/p/6232239.html  
-http://www.cnblogs.com/xudongliang/p/6845818.html
+http://www.cnblogs.com/nkwy2012/p/6232239.html   
+http://www.cnblogs.com/xudongliang/p/6845818.html  
+http://www.jianshu.com/p/a6cb2dfa7cfb  
