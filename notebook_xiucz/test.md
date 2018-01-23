@@ -1,1 +1,0 @@
-![aa](../pictures/2017.png)
